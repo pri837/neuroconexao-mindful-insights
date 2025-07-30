@@ -6,33 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Brain, Users, Target, Award, Heart, BookOpen } from "lucide-react";
 
 const QuemSomos = () => {
-  const teamMembers = [
-    {
-      name: "Dr. Ana Silva",
-      role: "Neurocientista",
-      speciality: "Neuroplasticidade e Desenvolvimento",
-      image: "/placeholder.svg"
-    },
-    {
-      name: "Prof. Carlos Mendes",
-      role: "Psicólogo Cognitivo",
-      speciality: "Formação de Hábitos e Comportamento",
-      image: "/placeholder.svg"
-    },
-    {
-      name: "Dra. Marina Costa",
-      role: "Neuropsicóloga",
-      speciality: "Saúde Mental e Bem-estar",
-      image: "/placeholder.svg"
-    },
-    {
-      name: "Dr. Pedro Oliveira",
-      role: "Especialista em Sono",
-      speciality: "Distúrbios do Sono e Ritmo Circadiano",
-      image: "/placeholder.svg"
-    }
-  ];
-
   const values = [
     {
       icon: Brain,
@@ -161,37 +134,6 @@ const QuemSomos = () => {
                   </div>
                   <h3 className="text-lg font-semibold">{value.title}</h3>
                   <p className="text-sm text-muted-foreground">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Nossa Equipe */}
-      <section className="py-16">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Nossa Equipe</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Conheça os especialistas que tornam possível a missão do NeuroConexão
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {teamMembers.map((member, index) => (
-              <Card key={index} className="text-center overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-                  <Users className="h-16 w-16 text-primary" />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-lg">{member.name}</CardTitle>
-                  <Badge variant="secondary" className="w-fit mx-auto">
-                    {member.role}
-                  </Badge>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{member.speciality}</p>
                 </CardContent>
               </Card>
             ))}
