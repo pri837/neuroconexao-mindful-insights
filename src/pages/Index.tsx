@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
 import CategoryCard from "@/components/CategoryCard";
+import BrainMap from "@/components/BrainMap";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Brain, Lightbulb, Baby, Moon, Heart, Stethoscope, Smartphone, ArrowRight, TrendingUp, Users, Mail } from "lucide-react";
@@ -174,6 +175,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Brain Map Interactive */}
+      <BrainMap />
 
       {/* Categories */}
       <section className="py-16">
