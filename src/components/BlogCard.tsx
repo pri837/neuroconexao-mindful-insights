@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Clock, User, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface BlogCardProps {
   title: string;
@@ -12,6 +13,7 @@ interface BlogCardProps {
   date: string;
   image?: string;
   featured?: boolean;
+  slug?: string;
 }
 
 const BlogCard = ({ 
@@ -22,8 +24,16 @@ const BlogCard = ({
   readTime, 
   date, 
   image,
-  featured = false 
+  featured = false,
+  slug
 }: BlogCardProps) => {
+  const navigate = useNavigate();
+
+  const handleReadArticle = () => {
+    if (slug) {
+      navigate(`/artigo/${slug}`);
+    }
+  };
   return (
     <Card className={`group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden ${
       featured ? 'md:col-span-2 lg:col-span-2' : ''
@@ -80,6 +90,7 @@ const BlogCard = ({
         <Button 
           variant="ghost" 
           className="w-full group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent group-hover:text-white transition-all duration-300"
+          onClick={handleReadArticle}
         >
           Ler artigo
           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

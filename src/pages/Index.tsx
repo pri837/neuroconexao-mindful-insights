@@ -70,7 +70,8 @@ const Index = () => {
       readTime: "8 min",
       date: "2 dias",
       image: heroImage,
-      featured: true
+      featured: true,
+      slug: "neuroplasticidade-40"
     },
     {
       title: "O Poder dos Microhábitos: Como Mudanças Pequenas Geram Grandes Resultados",
@@ -78,7 +79,8 @@ const Index = () => {
       category: "Neurociência dos Hábitos",
       author: "Prof. Carlos Mendes",
       readTime: "6 min",
-      date: "4 dias"
+      date: "4 dias",
+      slug: "microhabitos-poder"
     },
     {
       title: "Ansiedade: O Que Acontece no Seu Cérebro e Como Lidar",
@@ -86,7 +88,8 @@ const Index = () => {
       category: "Saúde Mental",
       author: "Dra. Marina Costa",
       readTime: "10 min",
-      date: "1 semana"
+      date: "1 semana",
+      slug: "ansiedade-cerebro"
     },
     {
       title: "Ritmo Circadiano: A Chave Para Um Sono Reparador",
@@ -94,7 +97,8 @@ const Index = () => {
       category: "Distúrbios do Sono",
       author: "Dr. Pedro Oliveira",
       readTime: "7 min",
-      date: "1 semana"
+      date: "1 semana",
+      slug: "ritmo-circadiano"
     }
   ];
 
