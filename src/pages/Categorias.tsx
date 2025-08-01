@@ -15,42 +15,48 @@ const Categorias = () => {
       description: "Fundamentos do funcionamento cerebral, anatomia neural e processos cognitivos fundamentais.",
       icon: Brain,
       postCount: 45,
-      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      slug: "neurociencia-basica"
     },
     {
       title: "Saúde Mental",
       description: "Bem-estar emocional, transtornos mentais, estratégias de coping e neurociência clínica.",
       icon: Heart,
       postCount: 32,
-      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      slug: "saude-mental"
     },
     {
       title: "Comportamento Social",
       description: "Neurociência social, relacionamentos, comunicação e comportamentos interpessoais.",
       icon: Users,
       postCount: 28,
-      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      slug: "comportamento-social"
     },
     {
       title: "Neuroplasticidade",
       description: "Capacidade de adaptação do cérebro, aprendizagem e mudanças neurais ao longo da vida.",
       icon: Zap,
       postCount: 24,
-      gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
+      gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+      slug: "neuroplasticidade"
     },
     {
       title: "Aprendizagem e Memória",
       description: "Processos de formação de memórias, técnicas de estudo e otimização cognitiva.",
       icon: BookOpen,
       postCount: 38,
-      gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
+      gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      slug: "aprendizagem-memoria"
     },
     {
       title: "Performance Cognitiva",
       description: "Otimização da performance mental, foco, concentração e produtividade.",
       icon: Target,
       postCount: 22,
-      gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
+      gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+      slug: "performance-cognitiva"
     }
   ];
 
@@ -158,6 +164,7 @@ const Categorias = () => {
                 icon={category.icon}
                 postCount={category.postCount}
                 gradient={category.gradient}
+                slug={category.slug}
               />
             ))}
           </div>

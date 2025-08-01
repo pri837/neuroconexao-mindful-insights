@@ -20,14 +20,20 @@ const Footer = () => {
               Tornando o conhecimento neurocientífico acessível, confiável e aplicável no dia a dia.
             </p>
             <div className="flex space-x-2">
-              <Button variant="ghost" size="sm">
-                <Instagram className="h-4 w-4" />
+              <Button variant="ghost" size="sm" asChild>
+                <a href="https://instagram.com/neuroconexao" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-4 w-4" />
+                </a>
               </Button>
-              <Button variant="ghost" size="sm">
-                <Linkedin className="h-4 w-4" />
+              <Button variant="ghost" size="sm" asChild>
+                <a href="https://linkedin.com/company/neuroconexao" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="h-4 w-4" />
+                </a>
               </Button>
-              <Button variant="ghost" size="sm">
-                <Youtube className="h-4 w-4" />
+              <Button variant="ghost" size="sm" asChild>
+                <a href="https://youtube.com/@neuroconexao" target="_blank" rel="noopener noreferrer">
+                  <Youtube className="h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>

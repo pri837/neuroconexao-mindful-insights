@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, LucideIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface CategoryCardProps {
   title: string;
@@ -8,9 +9,18 @@ interface CategoryCardProps {
   icon: LucideIcon;
   postCount: number;
   gradient: string;
+  slug?: string;
 }
 
-const CategoryCard = ({ title, description, icon: Icon, postCount, gradient }: CategoryCardProps) => {
+const CategoryCard = ({ title, description, icon: Icon, postCount, gradient, slug }: CategoryCardProps) => {
+  const navigate = useNavigate();
+
+  const handleExploreClick = () => {
+    if (slug) {
+      navigate(`/categoria/${slug}`);
+    }
+  };
+
   return (
     <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
       <div 
@@ -43,6 +53,7 @@ const CategoryCard = ({ title, description, icon: Icon, postCount, gradient }: C
         <Button 
           variant="ghost" 
           className="w-full group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent group-hover:text-white transition-all duration-300"
+          onClick={handleExploreClick}
         >
           Explorar categoria
           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

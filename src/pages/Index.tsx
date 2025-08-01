@@ -15,49 +15,56 @@ const Index = () => {
       description: "Pesquisas recentes, descobertas e aplicações práticas da neuroplasticidade no comportamento humano.",
       icon: Brain,
       postCount: 24,
-      gradient: "linear-gradient(135deg, #6366f1, #8b5cf6)"
+      gradient: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+      slug: "neurociencia-aplicada"
     },
     {
       title: "Neurociência dos Hábitos",
       description: "Como formar e mudar hábitos usando técnicas baseadas em neurociência para produtividade e foco.",
       icon: Lightbulb,
       postCount: 18,
-      gradient: "linear-gradient(135deg, #06b6d4, #3b82f6)"
+      gradient: "linear-gradient(135deg, #06b6d4, #3b82f6)",
+      slug: "habitos"
     },
     {
       title: "Neurodesenvolvimento",
       description: "Desenvolvimento cerebral na infância, adolescência e influência de estímulos ambientais.",
       icon: Baby,
       postCount: 15,
-      gradient: "linear-gradient(135deg, #10b981, #059669)"
+      gradient: "linear-gradient(135deg, #10b981, #059669)",
+      slug: "desenvolvimento"
     },
     {
       title: "Distúrbios do Sono",
       description: "Causas neurológicas da insônia, ritmo circadiano e estratégias terapêuticas para melhorar o sono.",
       icon: Moon,
       postCount: 21,
-      gradient: "linear-gradient(135deg, #8b5cf6, #a855f7)"
+      gradient: "linear-gradient(135deg, #8b5cf6, #a855f7)",
+      slug: "sono"
     },
     {
       title: "Linhas Terapêuticas",
       description: "TCC, terapias integrativas, mindfulness, EMDR, PNL e abordagens somáticas neuropsicológicas.",
       icon: Heart,
       postCount: 12,
-      gradient: "linear-gradient(135deg, #f59e0b, #d97706)"
+      gradient: "linear-gradient(135deg, #f59e0b, #d97706)",
+      slug: "terapias"
     },
     {
       title: "Saúde Mental",
       description: "Ansiedade, depressão e estresse sob a ótica da neurociência com técnicas de regulação emocional.",
       icon: Stethoscope,
       postCount: 28,
-      gradient: "linear-gradient(135deg, #ef4444, #dc2626)"
+      gradient: "linear-gradient(135deg, #ef4444, #dc2626)",
+      slug: "saude-mental"
     },
     {
       title: "Tecnologia e Cérebro",
       description: "Neurotecnologias, wearables, inteligência artificial, cognição e realidade virtual em terapias.",
       icon: Smartphone,
       postCount: 9,
-      gradient: "linear-gradient(135deg, #6366f1, #4f46e5)"
+      gradient: "linear-gradient(135deg, #6366f1, #4f46e5)",
+      slug: "tecnologia"
     }
   ];
 

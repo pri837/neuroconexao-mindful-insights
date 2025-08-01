@@ -9,6 +9,7 @@ import Contato from "./pages/Contato";
 import Privacidade from "./pages/Privacidade";
 import Artigo from "./pages/Artigo";
 import Categorias from "./pages/Categorias";
+import Categoria from "./pages/Categoria";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/categorias" element={<Categorias />} />
+          <Route path="/categoria/:slug" element={<Categoria />} />
           <Route path="/quem-somos" element={<QuemSomos />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/privacidade" element={<Privacidade />} />
