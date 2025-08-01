@@ -42,11 +42,11 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold">Categorias</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/neurociencia-aplicada" className="text-muted-foreground hover:text-primary transition-colors">Neurociência Aplicada</Link></li>
-              <li><Link to="/habitos" className="text-muted-foreground hover:text-primary transition-colors">Neurociência dos Hábitos</Link></li>
-              <li><Link to="/desenvolvimento" className="text-muted-foreground hover:text-primary transition-colors">Neurodesenvolvimento</Link></li>
-              <li><Link to="/sono" className="text-muted-foreground hover:text-primary transition-colors">Distúrbios do Sono</Link></li>
-              <li><Link to="/terapias" className="text-muted-foreground hover:text-primary transition-colors">Linhas Terapêuticas</Link></li>
+              <li><Link to="/categoria/neurociencia-aplicada" className="text-muted-foreground hover:text-primary transition-colors">Neurociência Aplicada</Link></li>
+              <li><Link to="/categoria/habitos" className="text-muted-foreground hover:text-primary transition-colors">Neurociência dos Hábitos</Link></li>
+              <li><Link to="/categoria/desenvolvimento" className="text-muted-foreground hover:text-primary transition-colors">Neurodesenvolvimento</Link></li>
+              <li><Link to="/categoria/sono" className="text-muted-foreground hover:text-primary transition-colors">Distúrbios do Sono</Link></li>
+              <li><Link to="/categoria/terapias" className="text-muted-foreground hover:text-primary transition-colors">Linhas Terapêuticas</Link></li>
             </ul>
           </div>
 

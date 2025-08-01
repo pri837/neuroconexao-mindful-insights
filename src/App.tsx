@@ -10,6 +10,7 @@ import Privacidade from "./pages/Privacidade";
 import Artigo from "./pages/Artigo";
 import Categorias from "./pages/Categorias";
 import Categoria from "./pages/Categoria";
+import Newsletter from "./pages/Newsletter";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/quem-somos" element={<QuemSomos />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/privacidade" element={<Privacidade />} />
+          <Route path="/newsletter" element={<Newsletter />} />
           <Route path="/artigo/:slug" element={<Artigo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
