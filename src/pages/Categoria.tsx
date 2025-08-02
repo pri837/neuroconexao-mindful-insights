@@ -1,15 +1,19 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, Filter, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Categoria = () => {
   const { slug } = useParams();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState('recent');
 
   // Mock data baseada no slug
   const getCategoryData = (slug: string) => {
@@ -55,7 +59,7 @@ const Categoria = () => {
 
   const categoryData = getCategoryData(slug || "");
 
-  const articles = [
+  const allArticles = [
     {
       title: "Neuroplasticidade: Como Treinar seu Cérebro",
       excerpt: "Descubra como você pode moldar seu cérebro através de práticas específicas baseadas em neurociência.",
@@ -112,6 +116,27 @@ const Categoria = () => {
     }
   ];
 
+  // Filtrar artigos por termo de busca
+  const filteredArticles = allArticles.filter(article => {
+    const matchesSearch = searchTerm === '' || 
+      article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesSearch;
+  });
+
+  // Ordenar artigos
+  const sortedArticles = [...filteredArticles].sort((a, b) => {
+    switch (sortBy) {
+      case 'title':
+        return a.title.localeCompare(b.title);
+      case 'author':
+        return a.author.localeCompare(b.author);
+      case 'recent':
+      default:
+        return 0; // Manter ordem original para "recent"
+    }
+  });
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -147,12 +172,21 @@ const Categoria = () => {
                   <Input 
                     placeholder="Buscar nesta categoria..." 
                     className="pl-10"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                   />
                 </div>
-                <Button variant="outline">
-                  <Filter className="h-4 w-4 mr-2" />
-                  Filtros
-                </Button>
+                <Select value={sortBy} onValueChange={setSortBy}>
+                  <SelectTrigger className="w-48">
+                    <Filter className="h-4 w-4 mr-2" />
+                    <SelectValue placeholder="Ordenar por" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="recent">Mais recentes</SelectItem>
+                    <SelectItem value="title">Título A-Z</SelectItem>
+                    <SelectItem value="author">Autor A-Z</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           </div>
@@ -165,23 +199,31 @@ const Categoria = () => {
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-2">Artigos em {categoryData.title}</h2>
             <p className="text-muted-foreground">
-              {articles.length} artigos encontrados
+              {sortedArticles.length} artigos encontrados
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((article, index) => (
-              <BlogCard
-                key={index}
-                title={article.title}
-                excerpt={article.excerpt}
-                category={article.category}
-                author={article.author}
-                readTime={article.readTime}
-                date={article.date}
-                slug={article.slug}
-              />
-            ))}
+            {sortedArticles.length > 0 ? (
+              sortedArticles.map((article, index) => (
+                <BlogCard
+                  key={index}
+                  title={article.title}
+                  excerpt={article.excerpt}
+                  category={article.category}
+                  author={article.author}
+                  readTime={article.readTime}
+                  date={article.date}
+                  slug={article.slug}
+                />
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-muted-foreground text-lg">
+                  Nenhum artigo encontrado para "{searchTerm}"
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Load More */}

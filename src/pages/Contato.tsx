@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -5,9 +6,53 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/components/ui/use-toast";
 import { Mail, Instagram, Linkedin, Youtube, MessageCircle, Handshake, Phone } from "lucide-react";
 
 const Contato = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validação básica
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Erro",
+        description: "Por favor, preencha todos os campos obrigatórios.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Simular envio (aqui você conectaria com um backend)
+    toast({
+      title: "Mensagem enviada!",
+      description: "Obrigado pelo contato. Responderemos em breve.",
+    });
+
+    // Limpar formulário
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+  };
   const contactMethods = [
     {
       icon: Mail,
@@ -101,32 +146,58 @@ const Contato = () => {
                   <CardTitle>Formulário de Contato</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Nome Completo *</label>
-                      <Input placeholder="Seu nome completo" />
+                      <Input 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Seu nome completo" 
+                        required
+                      />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium">E-mail *</label>
-                      <Input type="email" placeholder="seu@email.com" />
+                      <Input 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="seu@email.com" 
+                        required
+                      />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Assunto *</label>
-                    <Input placeholder="Sobre o que você gostaria de falar?" />
+                    <label className="text-sm font-medium">Assunto</label>
+                    <Input 
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      placeholder="Sobre o que você gostaria de falar?" 
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Mensagem *</label>
                     <Textarea 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
                       placeholder="Descreva sua dúvida, sugestão ou proposta..."
                       className="min-h-[120px]"
+                      required
                     />
                   </div>
 
                   <div className="space-y-4">
-                    <Button className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
+                    <Button 
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+                    >
                       <Mail className="h-4 w-4 mr-2" />
                       Enviar Mensagem
                     </Button>
@@ -134,6 +205,7 @@ const Contato = () => {
                       Seus dados são protegidos conforme nossa Política de Privacidade
                     </p>
                   </div>
+                  </form>
                 </CardContent>
               </Card>
             </div>

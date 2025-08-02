@@ -133,11 +133,19 @@ const Index = () => {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+                  onClick={() => document.getElementById('featured-posts')?.scrollIntoView({ behavior: 'smooth' })}
+                >
                   Explorar Artigos
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  onClick={() => document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' })}
+                >
                   Newsletter Grátis
                   <Mail className="ml-2 h-5 w-5" />
                 </Button>
@@ -170,7 +178,7 @@ const Index = () => {
       </section>
 
       {/* Featured Posts */}
-      <section className="py-16 bg-muted/30">
+      <section id="featured-posts" className="py-16 bg-muted/30">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Artigos em Destaque</h2>
@@ -209,7 +217,7 @@ const Index = () => {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="py-16 bg-gradient-to-r from-primary to-accent text-white">
+      <section id="newsletter" className="py-16 bg-gradient-to-r from-primary to-accent text-white">
         <div className="container text-center">
           <div className="max-w-3xl mx-auto space-y-8">
             <div className="space-y-4">
@@ -227,7 +235,12 @@ const Index = () => {
                 placeholder="Seu melhor e-mail" 
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/70"
               />
-              <Button variant="secondary" size="lg" className="bg-white text-primary hover:bg-white/90">
+              <Button 
+                variant="secondary" 
+                size="lg" 
+                className="bg-white text-primary hover:bg-white/90"
+                onClick={() => window.location.href = '/newsletter'}
+              >
                 Inscrever-se
               </Button>
             </div>
