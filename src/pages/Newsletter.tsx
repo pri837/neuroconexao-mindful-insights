@@ -1,12 +1,63 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { Mail, Check, Users, BookOpen, Calendar, Bell } from "lucide-react";
 
 const Newsletter = () => {
+  const { toast } = useToast();
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast({
+        title: "Erro",
+        description: "Por favor, insira seu e-mail.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert({ email });
+
+      if (error) {
+        if (error.code === '23505') {
+          toast({
+            title: "E-mail já cadastrado",
+            description: "Este e-mail já está inscrito em nossa newsletter.",
+            variant: "destructive"
+          });
+        } else {
+          throw error;
+        }
+        return;
+      }
+
+      toast({
+        title: "Inscrição realizada!",
+        description: "Obrigado por se inscrever. Você receberá nossa newsletter semanal.",
+      });
+
+      setEmail('');
+    } catch (error) {
+      console.error('Erro ao inscrever newsletter:', error);
+      toast({
+        title: "Erro ao inscrever",
+        description: "Ocorreu um erro. Tente novamente.",
+        variant: "destructive"
+      });
+    }
+  };
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -43,16 +94,23 @@ const Newsletter = () => {
                     </p>
                   </div>
                   
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
                     <Input 
+                      type="email"
                       placeholder="Seu melhor e-mail" 
                       className="flex-1"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
                     />
-                    <Button className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
+                    <Button 
+                      type="submit"
+                      className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+                    >
                       <Mail className="h-4 w-4 mr-2" />
                       Inscrever-se
                     </Button>
-                  </div>
+                  </form>
                   
                   <p className="text-xs text-muted-foreground text-center">
                     Não compartilhamos seus dados. Cancele a qualquer momento.
@@ -214,16 +272,24 @@ const Newsletter = () => {
               Junte-se a milhares de pessoas que já estão aplicando a neurociência 
               para melhorar suas vidas. É gratuito e você pode cancelar a qualquer momento.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <Input 
+                type="email"
                 placeholder="Seu melhor e-mail" 
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/70"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
-              <Button variant="secondary" className="bg-white text-primary hover:bg-white/90">
+              <Button 
+                type="submit"
+                variant="secondary" 
+                className="bg-white text-primary hover:bg-white/90"
+              >
                 <Mail className="h-4 w-4 mr-2" />
                 Inscrever-se
               </Button>
-            </div>
+            </form>
           </div>
         </div>
       </section>

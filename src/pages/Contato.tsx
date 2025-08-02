@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { Mail, Instagram, Linkedin, Youtube, MessageCircle, Handshake, Phone } from "lucide-react";
 
 const Contato = () => {
@@ -26,7 +27,7 @@ const Contato = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validação básica
@@ -39,19 +40,41 @@ const Contato = () => {
       return;
     }
 
-    // Simular envio (aqui você conectaria com um backend)
-    toast({
-      title: "Mensagem enviada!",
-      description: "Obrigado pelo contato. Responderemos em breve.",
-    });
+    try {
+      // Salvar no Supabase
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || 'Sem assunto',
+          message: formData.message
+        });
 
-    // Limpar formulário
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Mensagem enviada!",
+        description: "Obrigado pelo contato. Responderemos em breve.",
+      });
+
+      // Limpar formulário
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error);
+      toast({
+        title: "Erro ao enviar",
+        description: "Ocorreu um erro ao enviar sua mensagem. Tente novamente.",
+        variant: "destructive"
+      });
+    }
   };
   const contactMethods = [
     {

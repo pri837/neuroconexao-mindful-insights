@@ -2,8 +2,60 @@ import { Brain, Mail, Instagram, Linkedin, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Footer = () => {
+  const { toast } = useToast();
+  const [email, setEmail] = useState('');
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast({
+        title: "Erro",
+        description: "Por favor, insira seu e-mail.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert({ email });
+
+      if (error) {
+        if (error.code === '23505') { // Unique constraint violation
+          toast({
+            title: "E-mail já cadastrado",
+            description: "Este e-mail já está inscrito em nossa newsletter.",
+            variant: "destructive"
+          });
+        } else {
+          throw error;
+        }
+        return;
+      }
+
+      toast({
+        title: "Inscrição realizada!",
+        description: "Obrigado por se inscrever. Você receberá nossa newsletter semanal.",
+      });
+
+      setEmail('');
+    } catch (error) {
+      console.error('Erro ao inscrever newsletter:', error);
+      toast({
+        title: "Erro ao inscrever",
+        description: "Ocorreu um erro. Tente novamente.",
+        variant: "destructive"
+      });
+    }
+  };
+
   return (
     <footer className="bg-muted/30 border-t">
       <div className="container py-12">
@@ -67,13 +119,22 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground">
               Receba insights neurocientíficos diretamente no seu e-mail.
             </p>
-            <div className="space-y-2">
-              <Input placeholder="Seu e-mail" />
-              <Button className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
+            <form onSubmit={handleNewsletterSubmit} className="space-y-2">
+              <Input 
+                type="email"
+                placeholder="Seu e-mail" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <Button 
+                type="submit"
+                className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+              >
                 <Mail className="h-4 w-4 mr-2" />
                 Inscrever-se
               </Button>
-            </div>
+            </form>
           </div>
         </div>
 
