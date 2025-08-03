@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Brain, Search } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { href: "/", label: "Início" },
@@ -46,10 +47,18 @@ const Header = () => {
               {item.label}
             </Link>
           ))}
-          <Button variant="ghost" size="sm">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => navigate('/categorias')}
+          >
             <Search className="h-4 w-4" />
           </Button>
-          <Button size="sm" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
+          <Button 
+            size="sm" 
+            className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+            onClick={() => navigate('/newsletter')}
+          >
             Newsletter
           </Button>
         </nav>
@@ -80,11 +89,26 @@ const Header = () => {
               </Link>
             ))}
             <div className="flex space-x-2 pt-2">
-              <Button variant="ghost" size="sm" className="flex-1">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="flex-1"
+                onClick={() => {
+                  navigate('/categorias');
+                  setIsMenuOpen(false);
+                }}
+              >
                 <Search className="h-4 w-4 mr-2" />
                 Buscar
               </Button>
-              <Button size="sm" className="flex-1 bg-gradient-to-r from-primary to-accent">
+              <Button 
+                size="sm" 
+                className="flex-1 bg-gradient-to-r from-primary to-accent"
+                onClick={() => {
+                  navigate('/newsletter');
+                  setIsMenuOpen(false);
+                }}
+              >
                 Newsletter
               </Button>
             </div>

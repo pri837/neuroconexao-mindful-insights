@@ -5,10 +5,19 @@ import CategoryCard from "@/components/CategoryCard";
 import BrainMap from "@/components/BrainMap";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Brain, Lightbulb, Baby, Moon, Heart, Stethoscope, Smartphone, ArrowRight, TrendingUp, Users, Mail } from "lucide-react";
+import { Brain, Lightbulb, Baby, Moon, Heart, Stethoscope, Smartphone, ArrowRight, TrendingUp, Users, Mail, Search, Filter, FileText, MessageCircle } from "lucide-react";
 import heroImage from "@/assets/hero-brain.jpg";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [email, setEmail] = useState("");
+  const [loadMoreCount, setLoadMoreCount] = useState(1);
   const categories = [
     {
       title: "Neurociência Aplicada",
@@ -109,6 +118,59 @@ const Index = () => {
     }
   ];
 
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      navigate(`/categorias?search=${encodeURIComponent(searchTerm)}`);
+    }
+  };
+
+  const handleNewsletterSignup = async () => {
+    if (!email.trim()) {
+      toast({
+        title: "Email obrigatório",
+        description: "Por favor, insira seu email para se inscrever.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert([{ email: email.trim() }]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Inscrição realizada!",
+        description: "Você receberá nossos melhores conteúdos em seu email.",
+      });
+      setEmail("");
+    } catch (error) {
+      toast({
+        title: "Erro na inscrição",
+        description: "Tente novamente em alguns instantes.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleLoadMore = () => {
+    setLoadMoreCount(prev => prev + 1);
+    toast({
+      title: "Carregando mais artigos...",
+      description: `Exibindo ${(loadMoreCount + 1) * 4} artigos`,
+    });
+  };
+
+  const handleJoinCommunity = () => {
+    window.open("https://discord.gg/neurociencia", "_blank");
+  };
+
+  const handleContactUs = () => {
+    navigate("/contato");
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -144,10 +206,27 @@ const Index = () => {
                 <Button 
                   variant="outline" 
                   size="lg"
-                  onClick={() => document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={handleJoinCommunity}
                 >
-                  Newsletter Grátis
-                  <Mail className="ml-2 h-5 w-5" />
+                  Junte-se à Comunidade
+                  <Users className="ml-2 h-5 w-5" />
+                </Button>
+              </div>
+              
+              {/* Barra de busca */}
+              <div className="flex gap-2 max-w-md mx-auto">
+                <div className="relative flex-1">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input 
+                    placeholder="Buscar artigos..." 
+                    className="pl-10"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                  />
+                </div>
+                <Button onClick={handleSearch}>
+                  <Search className="h-4 w-4" />
                 </Button>
               </div>
 
@@ -188,9 +267,27 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredPosts.map((post, index) => (
+            {featuredPosts.slice(0, loadMoreCount * 3).map((post, index) => (
               <BlogCard key={index} {...post} />
             ))}
+          </div>
+          
+          <div className="text-center mt-8">
+            <Button 
+              variant="outline" 
+              onClick={handleLoadMore}
+              className="mr-4"
+            >
+              <FileText className="mr-2 h-4 w-4" />
+              Carregar Mais Artigos
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={handleContactUs}
+            >
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Fale Conosco
+            </Button>
           </div>
         </div>
       </section>
@@ -234,12 +331,15 @@ const Index = () => {
               <Input 
                 placeholder="Seu melhor e-mail" 
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/70"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleNewsletterSignup()}
               />
               <Button 
                 variant="secondary" 
                 size="lg" 
                 className="bg-white text-primary hover:bg-white/90"
-                onClick={() => window.location.href = '/newsletter'}
+                onClick={handleNewsletterSignup}
               >
                 Inscrever-se
               </Button>

@@ -6,9 +6,18 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Heart, Users, Zap, BookOpen, Target, Search, Filter } from "lucide-react";
+import { Brain, Heart, Users, Zap, BookOpen, Target, Search, Filter, MessageCircle, FileText } from "lucide-react";
+import { useState, useMemo } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const Categorias = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [searchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || "");
+  const [sortBy, setSortBy] = useState("recent");
+  const [loadMoreCount, setLoadMoreCount] = useState(1);
   const categories = [
     {
       title: "Neurociência Básica",
@@ -101,6 +110,43 @@ const Categorias = () => {
     }
   ];
 
+  const filteredAndSortedArticles = useMemo(() => {
+    let filtered = featuredArticles.filter(article =>
+      article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    switch (sortBy) {
+      case "title":
+        return filtered.sort((a, b) => a.title.localeCompare(b.title));
+      case "author":
+        return filtered.sort((a, b) => a.author.localeCompare(b.author));
+      case "recent":
+      default:
+        return filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    }
+  }, [searchTerm, sortBy]);
+
+  const handleSearch = () => {
+    toast({
+      title: "Busca realizada",
+      description: `Encontrados ${filteredAndSortedArticles.length} artigos`,
+    });
+  };
+
+  const handleLoadMore = () => {
+    setLoadMoreCount(prev => prev + 1);
+    toast({
+      title: "Carregando mais artigos...",
+      description: `Exibindo ${(loadMoreCount + 1) * 4} artigos`,
+    });
+  };
+
+  const handleContactUs = () => {
+    navigate("/contato");
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -133,12 +179,20 @@ const Categorias = () => {
                   <Input 
                     placeholder="Buscar artigos, temas ou palavras-chave..." 
                     className="pl-10"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
                   />
                 </div>
-                <Button variant="outline">
-                  <Filter className="h-4 w-4 mr-2" />
-                  Filtros
-                </Button>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="px-3 py-2 border rounded-md bg-background"
+                >
+                  <option value="recent">Mais Recentes</option>
+                  <option value="title">Por Título</option>
+                  <option value="author">Por Autor</option>
+                </select>
               </div>
             </div>
           </div>
@@ -182,7 +236,7 @@ const Categorias = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredArticles.map((article, index) => (
+            {filteredAndSortedArticles.slice(0, loadMoreCount * 3).map((article, index) => (
               <BlogCard
                 key={index}
                 title={article.title}
@@ -196,6 +250,24 @@ const Categorias = () => {
                 slug={article.slug}
               />
             ))}
+          </div>
+          
+          <div className="text-center mt-8">
+            <Button 
+              variant="outline" 
+              onClick={handleLoadMore}
+              className="mr-4"
+            >
+              <FileText className="mr-2 h-4 w-4" />
+              Carregar Mais Artigos
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={handleContactUs}
+            >
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Fale Conosco
+            </Button>
           </div>
         </div>
       </section>
@@ -247,10 +319,20 @@ const Categorias = () => {
               para trazer conteúdo relevante e atualizado sobre neurociência.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg" className="bg-white text-primary hover:bg-white/90">
+              <Button 
+                variant="secondary" 
+                size="lg" 
+                className="bg-white text-primary hover:bg-white/90"
+                onClick={handleContactUs}
+              >
                 Sugerir Tema
               </Button>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-white text-white hover:bg-white/10"
+                onClick={() => navigate("/")}
+              >
                 Ver Todos os Artigos
               </Button>
             </div>
