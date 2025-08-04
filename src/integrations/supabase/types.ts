@@ -14,6 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
+      articles: {
+        Row: {
+          author: string
+          author_bio: string | null
+          category: string
+          content: string
+          created_at: string
+          excerpt: string
+          id: string
+          image_url: string | null
+          is_published: boolean | null
+          keywords: string[] | null
+          likes: number | null
+          meta_description: string | null
+          published_date: string
+          read_time: string
+          related_articles: string[] | null
+          slug: string
+          tags: string[] | null
+          title: string
+          updated_at: string
+          views: number | null
+        }
+        Insert: {
+          author: string
+          author_bio?: string | null
+          category: string
+          content: string
+          created_at?: string
+          excerpt: string
+          id?: string
+          image_url?: string | null
+          is_published?: boolean | null
+          keywords?: string[] | null
+          likes?: number | null
+          meta_description?: string | null
+          published_date: string
+          read_time: string
+          related_articles?: string[] | null
+          slug: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+          views?: number | null
+        }
+        Update: {
+          author?: string
+          author_bio?: string | null
+          category?: string
+          content?: string
+          created_at?: string
+          excerpt?: string
+          id?: string
+          image_url?: string | null
+          is_published?: boolean | null
+          keywords?: string[] | null
+          likes?: number | null
+          meta_description?: string | null
+          published_date?: string
+          read_time?: string
+          related_articles?: string[] | null
+          slug?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+          views?: number | null
+        }
+        Relationships: []
+      }
       contact_submissions: {
         Row: {
           created_at: string
