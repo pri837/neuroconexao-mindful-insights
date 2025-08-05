@@ -58,7 +58,7 @@ const Artigo = () => {
         
         <h2>Neuroplasticidade Após os 40 Anos</h2>
         
-        <p>Contrariamente ao que se pensava, estudos recentes mostram que a neuroplasticidade não diminui drasticamente com a idade. Pesquisas da <a href="https://www.harvard.edu/neuroplasticity" target="_blank" rel="noopener">Universidade de Harvard</a> demonstram que:</p>
+        <p>Contrariamente ao que se pensava, estudos recentes mostram que a neuroplasticidade não diminui drasticamente com a idade. Pesquisas da <a href="https://www.harvard.edu/" target="_blank" rel="noopener">Universidade de Harvard</a> demonstram que:</p>
         
         <blockquote>
           "O cérebro adulto mantém uma notável capacidade de mudança e adaptação, especialmente quando estimulado adequadamente através de desafios cognitivos e físicos."
@@ -95,7 +95,7 @@ const Artigo = () => {
         
         <p>A neuroplasticidade oferece uma perspectiva esperançosa para o envelhecimento saudável. Ao compreender e aplicar estes princípios, você pode não apenas manter, mas também melhorar suas capacidades cognitivas após os 40 anos.</p>
         
-        <p>Para mais informações sobre neuroplasticidade, visite nosso <a href="/categorias/neuroplasticidade">guia completo sobre neuroplasticidade</a> ou explore nossos <a href="/categorias">outros artigos sobre neurociência</a>.</p>
+        <p>Para mais informações sobre neuroplasticidade, visite nosso <a href="/categorias">guia completo sobre neuroplasticidade</a> ou explore nossos <a href="/categorias">outros artigos sobre neurociência</a>.</p>
       `,
       tags: ["neuroplasticidade", "envelhecimento", "cognição", "neurociência", "saúde mental"],
       relatedArticles: ["microhabitos-poder", "ansiedade-cerebro", "ritmo-circadiano"],
@@ -160,7 +160,7 @@ const Artigo = () => {
         
         <h2>Estudos de Caso</h2>
         
-        <p>Uma pesquisa da <a href="https://www.stanford.edu/behavior-change" target="_blank" rel="noopener">Universidade Stanford</a> acompanhou 1.000 participantes implementando microhábitos por 12 semanas:</p>
+        <p>Uma pesquisa da <a href="https://www.stanford.edu/" target="_blank" rel="noopener">Universidade Stanford</a> acompanhou 1.000 participantes implementando microhábitos por 12 semanas:</p>
         
         <ul>
           <li>94% mantiveram pelo menos um microhábito</li>
@@ -199,7 +199,7 @@ const Artigo = () => {
         
         <p>Os microhábitos aproveitam a tendência natural do cérebro de formar padrões automáticos. Ao começar pequeno e construir gradualmente, você trabalha com, e não contra, sua neurologia natural.</p>
         
-        <p>Explore mais sobre <a href="/categorias/habitos">formação de hábitos</a> ou descubra outras <a href="/categorias">estratégias neurocientíficas</a> em nosso site.</p>
+        <p>Explore mais sobre <a href="/categorias">formação de hábitos</a> ou descubra outras <a href="/categorias">estratégias neurocientíficas</a> em nosso site.</p>
       `,
       tags: ["microhábitos", "mudança comportamental", "neurociência", "produtividade", "bem-estar"],
       relatedArticles: ["neuroplasticidade-40", "ansiedade-cerebro", "sono-consolidacao-memoria"],
