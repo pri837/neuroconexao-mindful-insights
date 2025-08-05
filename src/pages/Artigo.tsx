@@ -351,9 +351,9 @@ const Artigo = () => {
           </div>
         </header>
 
-        {/* Conteúdo do artigo */}
+        {/* Conteúdo do artigo formatado segundo normas ABNT */}
         <div 
-          className="prose prose-lg max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:text-base prose-li:text-base prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-primary prose-blockquote:bg-muted/30 prose-blockquote:p-4 prose-blockquote:my-6 prose-table:text-sm prose-th:bg-muted prose-th:p-3 prose-td:p-3"
+          className="abnt-article-content max-w-none"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 

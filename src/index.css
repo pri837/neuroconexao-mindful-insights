@@ -109,3 +109,195 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Formatação ABNT para artigos */
+.abnt-article-content {
+  /* Margens ABNT: superior e esquerda 3cm, inferior e direita 2cm */
+  margin: 3cm 2cm 3cm 3cm;
+  
+  /* Fonte conforme ABNT - Times New Roman ou Arial, tamanho 12pt */
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12pt;
+  
+  /* Espaçamento entre linhas 1,5 */
+  line-height: 1.5;
+  
+  /* Justificação do texto */
+  text-align: justify;
+  
+  /* Espaçamento entre parágrafos */
+  text-indent: 0;
+}
+
+.abnt-article-content h1 {
+  /* Título principal - centralizado, maiúsculo, negrito */
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14pt;
+  margin-top: 0;
+  margin-bottom: 2em;
+  line-height: 1.5;
+}
+
+.abnt-article-content h2 {
+  /* Seções primárias - alinhadas à esquerda, maiúsculo, negrito */
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12pt;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
+
+.abnt-article-content h3 {
+  /* Seções secundárias - alinhadas à esquerda, somente primeira letra maiúscula, negrito */
+  text-align: left;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 12pt;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
+
+.abnt-article-content h4 {
+  /* Seções terciárias - alinhadas à esquerda, somente primeira letra maiúscula, negrito */
+  text-align: left;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 12pt;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+.abnt-article-content p {
+  /* Parágrafos - justificados, com espaçamento */
+  text-align: justify;
+  margin-bottom: 1em;
+  line-height: 1.5;
+  font-size: 12pt;
+  
+  /* Primeira linha dos parágrafos com recuo de 1,25cm */
+  text-indent: 1.25cm;
+}
+
+.abnt-article-content p:first-of-type {
+  /* Primeiro parágrafo após título sem recuo */
+  text-indent: 0;
+}
+
+.abnt-article-content h1 + p,
+.abnt-article-content h2 + p,
+.abnt-article-content h3 + p,
+.abnt-article-content h4 + p {
+  /* Parágrafos logo após títulos sem recuo */
+  text-indent: 0;
+}
+
+.abnt-article-content ul,
+.abnt-article-content ol {
+  /* Listas - espaçamento adequado */
+  margin: 1em 0;
+  padding-left: 2cm;
+  line-height: 1.5;
+}
+
+.abnt-article-content li {
+  /* Itens de lista */
+  margin-bottom: 0.5em;
+  text-align: justify;
+  font-size: 12pt;
+  line-height: 1.5;
+}
+
+.abnt-article-content blockquote {
+  /* Citações - recuo de 4cm da margem esquerda */
+  margin: 1em 0 1em 4cm;
+  font-size: 11pt;
+  line-height: 1;
+  text-align: justify;
+  font-style: italic;
+}
+
+.abnt-article-content table {
+  /* Tabelas - centralizadas */
+  margin: 1em auto;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 10pt;
+}
+
+.abnt-article-content th,
+.abnt-article-content td {
+  /* Células de tabela */
+  border: 1px solid hsl(var(--border));
+  padding: 0.5em;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.abnt-article-content th {
+  /* Cabeçalhos de tabela */
+  background-color: hsl(var(--muted));
+  font-weight: bold;
+}
+
+.abnt-article-content a {
+  /* Links - sem formatação especial, apenas sublinhado */
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+.abnt-article-content a:hover {
+  color: hsl(var(--primary-foreground));
+  background-color: hsl(var(--primary));
+}
+
+.abnt-article-content strong {
+  /* Texto em negrito */
+  font-weight: bold;
+}
+
+.abnt-article-content em {
+  /* Texto em itálico */
+  font-style: italic;
+}
+
+/* Adaptações para telas menores */
+@media (max-width: 768px) {
+  .abnt-article-content {
+    /* Margens reduzidas para mobile */
+    margin: 1.5cm 1cm 1.5cm 1.5cm;
+    font-size: 11pt;
+  }
+  
+  .abnt-article-content h1 {
+    font-size: 13pt;
+  }
+  
+  .abnt-article-content h2 {
+    font-size: 11pt;
+  }
+  
+  .abnt-article-content h3,
+  .abnt-article-content h4 {
+    font-size: 11pt;
+  }
+  
+  .abnt-article-content p,
+  .abnt-article-content li {
+    font-size: 11pt;
+  }
+  
+  .abnt-article-content blockquote {
+    margin-left: 2cm;
+    font-size: 10pt;
+  }
+  
+  .abnt-article-content table {
+    font-size: 9pt;
+  }
+}
