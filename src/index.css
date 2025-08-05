@@ -115,9 +115,9 @@ All colors MUST be HSL.
   /* Margens ABNT: superior e esquerda 3cm, inferior e direita 2cm */
   margin: 3cm 2cm 3cm 3cm;
   
-  /* Fonte conforme ABNT - Times New Roman ou Arial, tamanho 12pt */
+  /* Fonte conforme ABNT - Times New Roman ou Arial, tamanho aumentado para melhor leitura */
   font-family: "Times New Roman", Times, serif;
-  font-size: 12pt;
+  font-size: 16pt;
   
   /* Espaçamento entre linhas 1,5 */
   line-height: 1.5;
