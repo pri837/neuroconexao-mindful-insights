@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -31,13 +32,24 @@ const BlogCard = ({
 
   const handleReadArticle = () => {
     if (slug) {
+      console.log(`Navigating to article: /artigo/${slug}`);
       navigate(`/artigo/${slug}`);
+    } else {
+      console.warn('No slug provided for article:', title);
     }
   };
+
+  const handleCardClick = () => {
+    handleReadArticle();
+  };
+
   return (
-    <Card className={`group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden ${
-      featured ? 'md:col-span-2 lg:col-span-2' : ''
-    }`}>
+    <Card 
+      className={`group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer ${
+        featured ? 'md:col-span-2 lg:col-span-2' : ''
+      }`}
+      onClick={handleCardClick}
+    >
       {image && (
         <div className="relative overflow-hidden">
           <img 
@@ -90,7 +102,10 @@ const BlogCard = ({
         <Button 
           variant="ghost" 
           className="w-full group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent group-hover:text-white transition-all duration-300"
-          onClick={handleReadArticle}
+          onClick={(e) => {
+            e.stopPropagation(); // Previne o duplo clique
+            handleReadArticle();
+          }}
         >
           Ler artigo
           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

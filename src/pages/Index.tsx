@@ -141,12 +141,32 @@ const Index = () => {
 
       if (error) throw error;
 
-      toast({
-        title: "Inscrição realizada!",
-        description: "Você receberá nossos melhores conteúdos em seu email.",
+      // Enviar email de confirmação automático
+      const response = await fetch('/api/send-welcome-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          name: email.split('@')[0] // Usar parte antes do @ como nome temporário
+        }),
       });
+
+      if (response.ok) {
+        toast({
+          title: "Inscrição realizada com sucesso!",
+          description: "Verifique seu email para confirmar a inscrição. Um email de boas-vindas foi enviado.",
+        });
+      } else {
+        toast({
+          title: "Inscrição realizada!",
+          description: "Você receberá nossos melhores conteúdos em seu email.",
+        });
+      }
       setEmail("");
     } catch (error) {
+      console.error('Newsletter signup error:', error);
       toast({
         title: "Erro na inscrição",
         description: "Tente novamente em alguns instantes.",
@@ -198,7 +218,7 @@ const Index = () => {
                 <Button 
                   size="lg" 
                   className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
-                  onClick={() => document.getElementById('featured-posts')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => navigate("/artigo/neuroplasticidade-40")}
                 >
                   Explorar Artigos
                   <ArrowRight className="ml-2 h-5 w-5" />
