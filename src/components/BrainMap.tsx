@@ -83,9 +83,9 @@ const BrainMap = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-background to-muted/30">
+    <section className="py-16 bg-gradient-to-br from-blue-100 to-blue-200/60 dark:from-blue-950/40 dark:to-blue-900/30">
       <div className="container">
-        <div className="text-center mb-12">
+        <div className="text-center mb-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Mapa Cerebral Interativo</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Passe o mouse sobre as diferentes regiões para descobrir suas funções
