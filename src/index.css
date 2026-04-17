@@ -119,6 +119,42 @@ All colors MUST be HSL.
   }
 }
 
+@layer components {
+  /* Gradiente neural sutil para seções hero - claro e escuro */
+  .hero-neural-gradient {
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, hsl(var(--primary) / 0.18), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 85% 30%, hsl(var(--accent) / 0.15), transparent 60%),
+      radial-gradient(ellipse 90% 70% at 50% 100%, hsl(var(--primary-glow) / 0.12), transparent 70%),
+      linear-gradient(135deg, hsl(var(--primary) / 0.06), hsl(var(--accent) / 0.06));
+    position: relative;
+  }
+
+  .dark .hero-neural-gradient {
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, hsl(var(--primary) / 0.35), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 85% 30%, hsl(var(--accent) / 0.28), transparent 60%),
+      radial-gradient(ellipse 90% 70% at 50% 100%, hsl(var(--primary-glow) / 0.22), transparent 70%),
+      linear-gradient(135deg, hsl(245 40% 10%), hsl(260 45% 14%));
+    color: hsl(0 0% 100%);
+  }
+
+  /* No modo escuro, força texto branco em todo conteúdo dentro do hero */
+  .dark .hero-neural-gradient h1,
+  .dark .hero-neural-gradient h2,
+  .dark .hero-neural-gradient h3,
+  .dark .hero-neural-gradient p,
+  .dark .hero-neural-gradient span,
+  .dark .hero-neural-gradient a,
+  .dark .hero-neural-gradient label {
+    color: hsl(0 0% 100%);
+  }
+
+  .dark .hero-neural-gradient .text-muted-foreground {
+    color: hsl(0 0% 100% / 0.85);
+  }
+}
+
 /* Formatação ABNT para artigos */
 .abnt-article-content {
   /* Margens ABNT: superior e esquerda 3cm, inferior e direita 2cm */

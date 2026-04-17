@@ -142,7 +142,7 @@ const Categoria = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="py-20" style={{ background: `${categoryData.gradient}10` }}>
+      <section className="py-20 hero-neural-gradient">
         <div className="container">
           <div className="max-w-4xl mx-auto space-y-8">
             <div className="space-y-4">

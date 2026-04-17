@@ -63,7 +63,7 @@ const Newsletter = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10">
+      <section className="py-20 hero-neural-gradient">
         <div className="container">
           <div className="text-center max-w-4xl mx-auto space-y-8">
             <div className="space-y-4">
