@@ -62,41 +62,50 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Fundo: roxo-azulado profundo, quente — identidade NeuroConexão */
+    --background: 245 35% 8%;
+    --foreground: 250 30% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 245 32% 12%;
+    --card-foreground: 250 30% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 245 35% 10%;
+    --popover-foreground: 250 30% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Primária: roxo neural vibrante, levemente mais luminoso no escuro */
+    --primary: 250 90% 70%;
+    --primary-foreground: 245 40% 10%;
+    --primary-glow: 270 95% 78%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 245 28% 18%;
+    --secondary-foreground: 250 30% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 245 25% 16%;
+    --muted-foreground: 250 20% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Acento: magenta/roxo elétrico para conexões neurais */
+    --accent: 285 95% 72%;
+    --accent-foreground: 245 40% 10%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 245 25% 22%;
+    --input: 245 25% 18%;
+    --ring: 250 90% 70%;
+
+    --neuro-gradient: linear-gradient(135deg, hsl(250 90% 70%), hsl(285 95% 72%));
+    --neural-glow: 0 0 40px hsl(250 90% 70% / 0.45);
+    --card-shadow: 0 4px 24px hsl(245 60% 4% / 0.6);
+
+    --sidebar-background: 245 38% 9%;
+    --sidebar-foreground: 250 25% 92%;
+    --sidebar-primary: 250 90% 70%;
+    --sidebar-primary-foreground: 245 40% 10%;
+    --sidebar-accent: 245 28% 16%;
+    --sidebar-accent-foreground: 250 25% 92%;
+    --sidebar-border: 245 25% 20%;
+    --sidebar-ring: 250 90% 70%;
   }
 }
 
