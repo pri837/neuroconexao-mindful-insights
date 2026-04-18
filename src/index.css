@@ -392,11 +392,22 @@ All colors MUST be HSL.
 }
 
 /* Brain Map - Glow neural azul no modo escuro */
+@keyframes neural-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px hsl(220 90% 60% / 0.7)) drop-shadow(0 0 14px hsl(245 90% 65% / 0.45));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px hsl(220 95% 70% / 0.95)) drop-shadow(0 0 22px hsl(250 95% 70% / 0.7));
+  }
+}
+
 .dark .brain-node {
   filter: drop-shadow(0 0 6px hsl(220 90% 60% / 0.7)) drop-shadow(0 0 14px hsl(245 90% 65% / 0.45));
+  animation: neural-pulse 2.8s ease-in-out infinite;
   transition: filter 0.3s ease;
 }
 
 .dark .brain-node:hover {
+  animation: none;
   filter: drop-shadow(0 0 12px hsl(220 95% 70% / 0.95)) drop-shadow(0 0 24px hsl(250 95% 70% / 0.7));
 }
