@@ -98,7 +98,7 @@ const BrainMap = () => {
               {/* Lobo Frontal */}
               <path
                 id="frontal"
-                className="cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
+                className="brain-node cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
                 fill="#FF7E79"
                 fillOpacity="0.7"
                 stroke="#333"
@@ -111,7 +111,7 @@ const BrainMap = () => {
               {/* Lobo Parietal */}
               <path
                 id="parietal"
-                className="cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
+                className="brain-node cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
                 fill="#7EB6FF"
                 fillOpacity="0.7"
                 stroke="#333"
@@ -124,7 +124,7 @@ const BrainMap = () => {
               {/* Lobo Temporal */}
               <path
                 id="temporal"
-                className="cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
+                className="brain-node cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
                 fill="#FFDE7E"
                 fillOpacity="0.7"
                 stroke="#333"
@@ -137,7 +137,7 @@ const BrainMap = () => {
               {/* Lobo Occipital */}
               <path
                 id="occipital"
-                className="cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
+                className="brain-node cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
                 fill="#7EFFB2"
                 fillOpacity="0.7"
                 stroke="#333"
@@ -150,7 +150,7 @@ const BrainMap = () => {
               {/* Cerebelo */}
               <path
                 id="cerebellum"
-                className="cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
+                className="brain-node cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
                 fill="#D67EFF"
                 fillOpacity="0.7"
                 stroke="#333"
@@ -163,7 +163,7 @@ const BrainMap = () => {
               {/* Tronco Cerebral */}
               <path
                 id="brainstem"
-                className="cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
+                className="brain-node cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
                 fill="#FF9D7E"
                 fillOpacity="0.7"
                 stroke="#333"
@@ -176,7 +176,7 @@ const BrainMap = () => {
               {/* Hipotálamo */}
               <circle
                 id="hypothalamus"
-                className="cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
+                className="brain-node cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
                 fill="#7EFFD4"
                 fillOpacity="0.7"
                 stroke="#333"
@@ -191,7 +191,7 @@ const BrainMap = () => {
               {/* Amígdala */}
               <circle
                 id="amygdala"
-                className="cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
+                className="brain-node cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
                 fill="#FF7ED4"
                 fillOpacity="0.7"
                 stroke="#333"
@@ -206,7 +206,7 @@ const BrainMap = () => {
               {/* Hipocampo */}
               <path
                 id="hippocampus"
-                className="cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
+                className="brain-node cursor-pointer transition-all duration-300 hover:scale-105 filter hover:drop-shadow-lg"
                 fill="#C4FF7E"
                 fillOpacity="0.7"
                 stroke="#333"
