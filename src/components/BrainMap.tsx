@@ -94,7 +94,7 @@ const BrainMap = () => {
 
         <div className="relative max-w-4xl mx-auto mb-16 mt-2">
           <div className="relative w-full max-w-2xl mx-auto">
-            <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+            <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto my-0 px-px py-0 pr-0 pl-0 text-justify">
               {/* Lobo Frontal */}
               <path
                 id="frontal"
