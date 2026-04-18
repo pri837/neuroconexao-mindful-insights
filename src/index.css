@@ -346,3 +346,13 @@ All colors MUST be HSL.
     font-size: 9pt;
   }
 }
+
+/* Brain Map - Glow neural azul no modo escuro */
+.dark .brain-node {
+  filter: drop-shadow(0 0 6px hsl(220 90% 60% / 0.7)) drop-shadow(0 0 14px hsl(245 90% 65% / 0.45));
+  transition: filter 0.3s ease;
+}
+
+.dark .brain-node:hover {
+  filter: drop-shadow(0 0 12px hsl(220 95% 70% / 0.95)) drop-shadow(0 0 24px hsl(250 95% 70% / 0.7));
+}
