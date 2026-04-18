@@ -347,6 +347,46 @@ All colors MUST be HSL.
   }
 }
 
+/* Glow neural no modo claro - títulos, logo e botões (tons escuros para visibilidade) */
+h1, h2, h3 {
+  text-shadow:
+    0 0 10px hsl(245 85% 45% / 0.25),
+    0 0 20px hsl(285 80% 40% / 0.15);
+}
+
+header a[href="/"] svg {
+  filter: drop-shadow(0 0 5px hsl(245 85% 45% / 0.5))
+          drop-shadow(0 0 12px hsl(285 80% 45% / 0.35));
+  transition: filter 0.3s ease;
+}
+
+header a[href="/"] span {
+  text-shadow:
+    0 0 8px hsl(245 85% 45% / 0.4),
+    0 0 18px hsl(285 80% 45% / 0.25);
+}
+
+header a[href="/"]:hover svg {
+  filter: drop-shadow(0 0 9px hsl(245 90% 50% / 0.75))
+          drop-shadow(0 0 20px hsl(285 85% 45% / 0.55));
+}
+
+button:not([variant="ghost"]):not([variant="link"]):not(.no-glow),
+.bg-primary,
+a .bg-primary {
+  box-shadow:
+    0 0 12px hsl(245 85% 45% / 0.3),
+    0 0 24px hsl(285 80% 45% / 0.18);
+  transition: box-shadow 0.3s ease;
+}
+
+button:not([variant="ghost"]):not([variant="link"]):not(.no-glow):hover,
+.bg-primary:hover {
+  box-shadow:
+    0 0 18px hsl(245 90% 50% / 0.5),
+    0 0 32px hsl(285 85% 45% / 0.32);
+}
+
 /* Glow neural no modo escuro - títulos, logo e botões */
 .dark h1,
 .dark h2,
